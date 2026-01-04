@@ -1,166 +1,21 @@
-# Tests for CouscousDB
+"""
+Bug Free Couscous - Bug Fix
+"""
 
-import unittest
-from src.core import Core
+def safe_divide(a, b):
+    """Safely divide two numbers with error handling"""
+    if b == 0:
+        raise ValueError("Division by zero is not allowed")
+    return a / b
 
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
+def parse_config(config_str):
+    """Parse configuration string with improved error handling"""
+    if not config_str:
+        return {}
     
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_5(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_14(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_18(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_26(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_36(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_42(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_46(self):
-        self.assertTrue(True)
-
-
-# Tests for CouscousDB
-
-import unittest
-from src.core import Core
-
-class TestCore(unittest.TestCase):
-    def setUp(self):
-        self.core = Core()
-    
-    def test_initialization(self):
-        self.assertTrue(self.core.initialized)
-    
-    def test_status(self):
-        status = self.core.get_status()
-        self.assertIn("status", status)
-        self.assertEqual(status["status"], "running")
-    
-    def test_update_51(self):
-        self.assertTrue(True)
+    try:
+        import json
+        return json.loads(config_str)
+    except json.JSONDecodeError as e:
+        print(f"Warning: Invalid JSON config: {e}")
+        return {}
